@@ -1,0 +1,16 @@
+name: 'Qed42 Migration Assignment'
+type: module
+description: 'Custom module for Qed42 offline coding assignment.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+package: 'Migration'
+dependencies:
+  - drupal:migrate
+  - drupal:migrate_plus
+  - drupal:migrate_tools
+  - drupal:migrate_file
+  - drupal:pathauto
+config_devel:
+  install:
+    - migrate_plus.migration_group.qed42_migration
+    - migrate_plus.migration.qed42_migration_articles

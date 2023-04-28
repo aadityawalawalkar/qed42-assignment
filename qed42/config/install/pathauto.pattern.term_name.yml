@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: term_name
+label: 'Vocabulary/Term Name'
+type: 'canonical_entities:taxonomy_term'
+pattern: '[term:vocabulary]/[term:name]'
+selection_criteria:
+  080f81c3-39e9-4271-bdcb-70afeebaa322:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 080f81c3-39e9-4271-bdcb-70afeebaa322
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      categories: categories
+      sources: sources
+selection_logic: and
+weight: -5
+relationships: {  }

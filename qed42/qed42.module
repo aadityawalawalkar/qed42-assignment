@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains qed42.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function qed42_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the qed42 module.
+    case 'help.page.qed42':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Custom module for Qed42 offline coding assignment.') . '</p>';
+      return $output;
+
+    default:
+  }
+}

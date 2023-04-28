@@ -1,0 +1,96 @@
+id: qed42_migration_articles
+label: Migrate articles from external XML source in articles content type.
+migration_group: qed42_migration
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  urls: 'http://feeds.feedburner.com/ndtvnews-top-stories.xml'
+  data_parser_plugin: xml
+  item_selector: /rss/channel/item
+  fields:
+    -	name:	title
+      label: Title
+      selector: title
+    - name: guid
+      label: Guid
+      selector: guid
+    - name: link
+      label: Origin Link
+      selector: link
+    - name: pub_date
+      label: Pubished Date
+      selector: pubDate
+    - name: summary
+      label: Summary
+      selector: description
+    - name: content
+      label: Content
+      selector: content:encoded
+    - name: feed_image
+      label: Article Image
+      selector: //media:content/@url
+    - name: article_category
+      label: Article Category
+      selector: link
+    - name: article_source
+      label: Article Source
+      selector: link
+  ids:
+    guid:
+      type: string
+  constants:
+    file_destination: 'public://qed42_migration/feed_image/'
+process:
+  # Mapping fields.
+  title:
+    plugin: skip_on_empty
+    method: process
+    source: title
+  field_guid:
+    plugin: skip_on_empty
+    method: process
+    source: guid
+  field_link: link
+  created:
+    plugin: format_date
+    from_format: 'D, d M Y H:i:s O'
+    to_format: 'U'
+    source: pub_date
+  body/summary: summary
+  body/value: content
+  body/format:
+    plugin: default_value
+    default_value: "full_html"
+  field_feed_image:
+    - plugin: file_import
+      source: feed_image
+      destination: constants/file_destination
+      uid: 1
+      file_exists: rename
+  field_source:
+    - plugin: extract_article_source
+      source: article_source
+    - plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: sources
+      value_key: name
+  field_category:
+    - plugin: extract_article_category
+      source: article_category
+    - plugin: entity_generate
+      entity_type: taxonomy_term
+      bundle_key: vid
+      bundle: categories
+      value_key: name
+  status:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:node'
+  default_bundle: article
+migration_dependencies:
+  required:
+    - extract_article_category
+    - extract_article_source
+dependencies: { }
