@@ -2,10 +2,9 @@
 Custom module for qed42 assignment.
 
 # Assumption:-
-	* Article content type which is generated with default installation mode is available.
 	* Drush is installed & available.
 
-NOTE:- Another way would be to create a new content with this custom module which would be available on installing this custom module. I can do this in the next iteration of the custom module. I skipped doing this in the interest of the time.
+NOTE:- Created a new content type "Articles" with this custom module which would be available on installing this custom module.
 
 ============================================================================================================================
 # Task Description:-
@@ -40,7 +39,7 @@ Bonus points
 
 # Install the custom module "qed42".
 
-# Installation will create the required fields in the existing "Article" content type, a migration group "Qed42 Migration Assignment Group" & a migration "Migrate articles from external XML source in articles content type" to migrate posts from the external xml source.
+# Installation will create the required fields in the new "Articles" content type, a migration group "Qed42 Migration Assignment Group" & a migration "Migrate articles from external XML source in articles content type" to migrate posts from the external xml source.
 
 # To execute the migration from terminal run the following command:-
 	drush mim qed42_migration_articles --update --sync
