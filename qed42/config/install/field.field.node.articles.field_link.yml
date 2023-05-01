@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_link
-    - node.type.article
+    - node.type.articles
   module:
     - link
-id: node.article.field_link
+id: node.articles.field_link
 field_name: field_link
 entity_type: node
-bundle: article
+bundle: articles
 label: 'Origin Link'
 description: ''
 required: false

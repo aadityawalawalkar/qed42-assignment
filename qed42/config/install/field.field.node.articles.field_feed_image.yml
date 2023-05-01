@@ -3,13 +3,13 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_feed_image
-    - node.type.article
+    - node.type.articles
   module:
     - file
-id: node.article.field_feed_image
+id: node.articles.field_feed_image
 field_name: field_feed_image
 entity_type: node
-bundle: article
+bundle: articles
 label: 'Feed Image'
 description: ''
 required: false

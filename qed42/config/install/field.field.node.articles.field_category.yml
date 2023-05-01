@@ -2,14 +2,14 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_source
-    - node.type.article
-    - taxonomy.vocabulary.sources
-id: node.article.field_source
-field_name: field_source
+    - field.storage.node.field_category
+    - node.type.articles
+    - taxonomy.vocabulary.categories
+id: node.articles.field_category
+field_name: field_category
 entity_type: node
-bundle: article
-label: Source
+bundle: articles
+label: Category
 description: ''
 required: false
 translatable: false
@@ -19,7 +19,7 @@ settings:
   handler: 'default:taxonomy_term'
   handler_settings:
     target_bundles:
-      sources: sources
+      categories: categories
     sort:
       field: name
       direction: asc

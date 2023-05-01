@@ -11,11 +11,10 @@ selection_criteria:
   b3873274-9345-47d1-917f-f9a02771a2e6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: b3873274-9345-47d1-917f-f9a02771a2e6
     context_mapping:
       node: node
     bundles:
-      article: article
+      article: articles
 selection_logic: and
 weight: -5
 relationships: {  }

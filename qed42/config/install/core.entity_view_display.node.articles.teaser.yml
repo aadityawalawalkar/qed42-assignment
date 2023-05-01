@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.articles.body
+    - field.field.node.articles.field_category
+    - field.field.node.articles.field_feed_image
+    - field.field.node.articles.field_guid
+    - field.field.node.articles.field_link
+    - field.field.node.articles.field_source
+    - node.type.articles
+  module:
+    - text
+    - user
+id: node.articles.teaser
+targetEntityType: node
+bundle: articles
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_category: true
+  field_feed_image: true
+  field_guid: true
+  field_link: true
+  field_source: true
